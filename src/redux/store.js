@@ -3,7 +3,7 @@ import rootReducer from './rootReducer';
 
 const middleware = [...getDefaultMiddleware()];
 
-export const configuredStore = (initialState) => {
+const configuredStore = (initialState) => {
   const store = configureStore({
     reducer: rootReducer,
     middleware: middleware,
@@ -12,3 +12,5 @@ export const configuredStore = (initialState) => {
 
   return store;
 }
+
+export const store = configuredStore();

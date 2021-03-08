@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { createSelector } from 'reselect';
 
 const dialogSlice = createSlice({
   name: 'counter',
@@ -14,7 +15,6 @@ const dialogSlice = createSlice({
       state.value = action.payload;
     },
     addToList: (state, action) => {
-      // debugger
       state.list.push(action.payload);
     },
     removeFromList: (state, action) => {
@@ -36,4 +36,8 @@ const incrementAsync = (delay = 1000) => (dispatch) =>
 
 export default dialogSlice.reducer;
 export const actions = {...dialogSlice.actions, incrementAsync, incrementIfOdd};
-export const selectors = {value: (state) => state.counter.value};
+export const selectors = {
+  value: (state) => state.counter.value,
+  list: (state) => state.counter.list,
+  doubleListLength: () => createSelector(selectors.list, (list) => list.length * 2)
+};

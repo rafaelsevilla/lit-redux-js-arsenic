@@ -5,9 +5,6 @@ import '@polymer/iron-icon/iron-icon.js';
 import '@polymer/iron-icons/iron-icons.js';
 import '@polymer/iron-icons/av-icons.js';
 import './components/header';
-import {configuredStore} from './redux/store';
-
-export const store = configuredStore();
 
 // initialization
 window.addEventListener('load', () => {
@@ -52,7 +49,7 @@ export class App extends LitElement {
       <dialog-container></dialog-container>
       <load-indicator></load-indicator> -->
       <!-- <app-header></app-header> -->
-      <app-header title="title"></app-header>
+      <app-header title="(arsenic) 33 Demo"></app-header>
       <slot></slot>
     `;
   }

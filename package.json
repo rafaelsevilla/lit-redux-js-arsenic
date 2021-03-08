@@ -1,16 +1,17 @@
 {
   "devDependencies": {
-    "eslint": "^7.21.0",
+    "@open-wc/building-rollup": "^1.9.4",
     "@open-wc/eslint-config": "^4.2.0",
-    "prettier": "^2.2.1",
+    "@web/dev-server": "^0.1.8",
+    "deepmerge": "^4.2.2",
+    "eslint": "^7.21.0",
     "eslint-config-prettier": "^7.2.0",
     "husky": "^4.3.8",
     "lint-staged": "^10.5.4",
-    "@open-wc/building-rollup": "^1.9.4",
-    "deepmerge": "^4.2.2",
+    "prettier": "^2.2.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.40.0",
-    "@web/dev-server": "^0.1.8"
+    "rollup-plugin-copy": "^3.4.0"
   },
   "scripts": {
     "lint": "eslint --ext .js,.html . --ignore-path .gitignore && prettier \"**/*.js\" --check --ignore-path .gitignore",
@@ -39,7 +40,8 @@
     "react-redux": "^7.2.2",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "reselect": "^4.0.0"
   },
   "eslintConfig": {
     "extends": [

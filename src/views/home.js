@@ -1,6 +1,6 @@
 import { html, css, LitElement } from "lit-element";
-import { store } from '../app';
-import { actions } from '../redux/dialogSlice';
+import { store } from '../redux/store';
+import { actions, selectors } from '../redux/dialogSlice';
 import { connect } from 'lit-redux-watch';
 import stylesGlobal from '../stylesGlobal';
 import { Access } from '../access/access';
@@ -32,8 +32,9 @@ export class Home extends Access(connect(store)(LitElement)) {
 
   static get watch() {
     return {
-      value: {source: 'counter.value'},
-      list: {source: 'counter.list'}
+      value: {source: selectors.value},
+      list: {source: selectors.list},
+      doubleListLength: {source: selectors.doubleListLength}
     }
   }
 
@@ -56,7 +57,8 @@ export class Home extends Access(connect(store)(LitElement)) {
     <button @click=${() => {
       this.get('http://slowwly.robertomurray.co.uk/delay/5000/url/https://www.google.co.uk');
     }}>request something (slow)</button>
-    <span>v: ${this.value}</span>
+    <!-- not yet working -->
+    <!-- <span>Double list length: ${this.doubleListLength}</span> -->
 
     <div style="display: flex; flex-flow: column;">
       ${this.list.map((listValue, index) => {
