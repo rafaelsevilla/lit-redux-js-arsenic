@@ -1,0 +1,9 @@
+{
+    "sendSomething": "{{ things }} schicken",
+    "cats": "Katzen",
+    "three": {
+        "something": "Etwas <b>3</b>"
+    },
+    "switchLanguage": "Sprache wechseln",
+    "whatElseIsThere": "Aber was gibt es sonst noch?"
+}

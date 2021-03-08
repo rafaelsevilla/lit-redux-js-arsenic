@@ -1,3 +1,11 @@
 {
-    "hi": "ho"
+    "sendSomething": "Send {{ things }}",
+    "cats": "Cats",
+    "three": {
+        "something": "Something 3"
+    },
+    "switchLanguage": "Switch Language",
+    "whatElseIsThere": "But what else is there?",
+    "somethingNew": "something new",
+    "onlyTomorrow": "This should show up on 26.05 (on its own!)"
 }

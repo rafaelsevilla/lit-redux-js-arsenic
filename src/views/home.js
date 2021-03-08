@@ -49,7 +49,10 @@ export class Home extends Access(connect(store)(LitElement)) {
   }
 
   render = () => html`
-    <div>home</div>
+    <!-- TODO bring more pure grid examples -->
+    <div class="pure-g">
+      <div class="pure-u-1">home</div>
+    </div>
     <button @click=${() => {
       store.dispatch(actions.addToList(this.index));
       this.index++;
