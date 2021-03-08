@@ -6,7 +6,6 @@ export function Access(
       super(...args);
     }
 
-    // remember to update the method signature also on AccessGet!
     async get(
       url,
       queryParams,
@@ -74,7 +73,6 @@ export function Access(
     }
 
     performRequest(request) {
-      AccessMapper.mapAuthentication(request, {});
       return fetch(request);
     }
   };
@@ -110,14 +108,6 @@ export class AccessMapper {
       return Promise.resolve(accessResponse);
     } catch (error) {
       return Promise.reject(error);
-    }
-  }
-
-  static mapAuthentication(request, OneConfig) {
-    if (request.url.includes(SystemMatch.UCP)) {
-      request.headers.set('x-api-key', OneConfig.ucpApiKey);
-    } else if (request.url.includes(SystemMatch.VSS)) {
-      request.headers.set('x-vss-api-key', OneConfig.vssApiKey);
     }
   }
 

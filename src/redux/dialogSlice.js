@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const dialogSlice = createSlice({
   name: 'counter',
-  initialState: { value: 0 },
+  initialState: { value: 0, list: [] },
   reducers: {
     increment: (state) => {
       state.value += 1;
@@ -12,6 +12,13 @@ const dialogSlice = createSlice({
     },
     setTo: (state, action) => {
       state.value = action.payload;
+    },
+    addToList: (state, action) => {
+      // debugger
+      state.list.push(action.payload);
+    },
+    removeFromList: (state, action) => {
+      state.list.splice(action.payload, 1);
     }
   },
 });
