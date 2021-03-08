@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="Description" content="Put your description here.">
+  <base href="/">
+  <title>(arsenic)</title>
+</head>
+
+<body>
+  <arsenic-pwa>
+    <main>
+  </arsenic-pwa>
+
+  <script>
+    window.process = {
+      env: {
+        NODE_ENV: 'production'
+      }
+    };
+    function msie() {
+      var ua = window.navigator.userAgent;
+      var msie = ua.indexOf("MSIE ");
+
+      return msie > 0 || !!navigator.userAgent.match(/Trident\/|MSIE/);
+    }
+
+    msie() ? window.location = 'unsupported.html' : undefined;
+  </script>
+
+  <script type="module" src="./src/app.js"></script>
+</body>
+
+</html>
