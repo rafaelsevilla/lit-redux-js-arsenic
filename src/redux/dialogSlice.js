@@ -34,6 +34,13 @@ const incrementIfOdd = () => (dispatch, getState) => {
 const incrementAsync = (delay = 1000) => (dispatch) =>
   setTimeout(() => dispatch(actions.increment()), delay);
 
+// const delay = (ms) => new Promise(res => setTimeout(res, ms))
+
+// const ajam = async (d = 1000) => dispatch => {
+//   await delay(d);
+//   dispatch(actions.increment());
+// }
+
 export default dialogSlice.reducer;
 export const actions = {...dialogSlice.actions, incrementAsync, incrementIfOdd};
 export const selectors = {
