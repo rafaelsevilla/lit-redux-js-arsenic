@@ -1,10 +1,8 @@
 import { LitElement, html, css } from "lit-element";
-import { connect } from 'lit-redux-watch';
 import { store } from '../redux/store';
-import { selectors } from '../redux/dialogSlice';
 import stylesGlobal from '../stylesGlobal';
 
-export class Header extends connect(store)(LitElement) {
+export class Header extends LitElement {
 
   static styles = [
     stylesGlobal,
@@ -23,20 +21,20 @@ export class Header extends connect(store)(LitElement) {
 
   static get properties() {
     return {
-      title: { type: String }
+      title: { type: String },
+      count: { type: Number },
     };
   }
 
-  static get watch() {
-    return {
-      value: {source: selectors.value},
-      list: {source: selectors.list},
-      doubleListLength: {source: selectors.doubleListLength}
-    }
+  firstUpdated() {
+    // initialize value from state
+    this.count = store.getState().data.count;
+    // subscribe to state updates
+    store.subscribe(data => this.count = data, state => state.data.count);
   }
 
   render = () => html`<div class="header">
-      <span>${this.title} - ${this.list.length}</span>
+      <span>${this.title} - ${this.count}</span>
     </div>`;
 }
 

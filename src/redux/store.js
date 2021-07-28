@@ -1,16 +1,11 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import rootReducer from './rootReducer';
+import create from 'zustand/vanilla';
+import { devtools } from 'zustand/middleware';
+import { produce } from 'immer';
 
-const middleware = [...getDefaultMiddleware()];
-
-const configuredStore = (initialState) => {
-  const store = configureStore({
-    reducer: rootReducer,
-    middleware: middleware,
-    preloadedState: initialState
-  });
-
-  return store;
-}
-
-export const store = configuredStore();
+export const store = create(devtools((set) => ({
+  data: {
+    count: 0,
+    text: ""
+  },
+  set: fn => set(produce(fn))
+})));

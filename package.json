@@ -33,6 +33,8 @@
     "@polymer/paper-ripple": "^3.0.2",
     "@reduxjs/toolkit": "^1.5.0",
     "@vaadin/router": "^1.7.4",
+    "haunted": "^4.8.2",
+    "immer": "^9.0.5",
     "lit-element": "^2.4.0",
     "lit-html": "^1.3.0",
     "lit-redux-watch": "^0.3.8",
@@ -41,7 +43,8 @@
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "reselect": "^4.0.0"
+    "reselect": "^4.0.0",
+    "zustand": "^3.5.7"
   },
   "eslintConfig": {
     "extends": [

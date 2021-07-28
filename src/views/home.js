@@ -1,11 +1,9 @@
 import { html, css, LitElement } from "lit-element";
 import { store } from '../redux/store';
-import { actions, selectors } from '../redux/dialogSlice';
-import { connect } from 'lit-redux-watch';
 import stylesGlobal from '../stylesGlobal';
 import { Access } from '../access/access';
 
-export class Home extends Access(connect(store)(LitElement)) {
+export class Home extends Access(LitElement) {
 
   static styles = [
       stylesGlobal,
@@ -30,47 +28,29 @@ export class Home extends Access(connect(store)(LitElement)) {
       `
     ]
 
-  static get watch() {
-    return {
-      value: {source: selectors.value},
-      list: {source: selectors.list},
-      doubleListLength: {source: selectors.doubleListLength}
-    }
-  }
-
   static get properties() {
     return {
-      index: {type: Number}
+      count: {type: Number},
+      list: {type: Array}
     }
   }
 
   firstUpdated() {
-    this.index = 0;
+    this.list = [];
+
+    this.count = store.getState().data.count;
+    store.subscribe(stateCount => this.count = stateCount, state => state.data.count);
   }
 
   render = () => html`
     <!-- TODO bring more pure grid examples -->
-    <div class="pure-g">
-      <div class="pure-u-1">home</div>
-    </div>
     <button @click=${() => {
-      store.dispatch(actions.addToList(this.index));
-      this.index++;
-    }}>do something</button>
-    <button @click=${() => {
-      this.get('http://slowwly.robertomurray.co.uk/delay/5000/url/https://www.google.co.uk');
-    }}>request something (slow)</button>
-    <!-- not yet working -->
-    <!-- <span>Double list length: ${this.doubleListLength}</span> -->
+      store.getState().set(state => {state.data.count = state.data.count + 50});
+    }}>+50</button>
+
+    Count: ${this.count}
 
     <div style="display: flex; flex-flow: column;">
-      ${this.list.map((listValue, index) => {
-        return html`
-          <div class="list-element">
-            <span>listValue: ${listValue}</span>
-            <span class="delete" @click=${() => store.dispatch(actions.removeFromList(index))}>x</span>
-          </div>`;
-      })}
     </div>
   `;
 }
